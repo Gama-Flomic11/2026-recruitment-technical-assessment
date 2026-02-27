@@ -46,17 +46,13 @@ app.post("/parse", (req:Request, res:Response) => {
 // Takes in a recipeName and returns it in a form that 
 const parse_handwriting = (recipeName: string): string | null => {
   let regex = /[-_]/
-  console.log(recipeName.match(regex))
   while (recipeName.match(regex) != null) {
     recipeName = recipeName.replace(regex, ' ')
-    console.log(recipeName)
   }
 
   regex = /  /
-  console.log(recipeName.match(regex))
   while (recipeName.match(regex) != null) {
     recipeName = recipeName.replace(regex, ' ')
-    console.log(recipeName)
   }
 
 
@@ -64,31 +60,28 @@ const parse_handwriting = (recipeName: string): string | null => {
   while (recipeName.match(regex) != null) {
     const element = recipeName.match(regex)
     recipeName = recipeName.replace(regex, element[0].toLowerCase())
-    console.log(recipeName)
   }
 
   regex = /[^A-Za-z_ ]/
   while (recipeName.match(regex) != null) {
     recipeName = recipeName.replace(regex, '')
-    console.log(recipeName)
   }
 
   regex = /[a-z]/
   if (recipeName.search(regex) == 0) {
     const element = recipeName.match(regex)
-    console.log(element[0]);
     recipeName = recipeName.replace(regex, element[0].toUpperCase())
-    console.log(recipeName)
   }
 
   regex = /\s[a-z]/
   while (recipeName.match(regex) != null) {
     const element = recipeName.match(regex)
     recipeName = recipeName.replace(regex, element[0].toUpperCase())
-    console.log(recipeName)
   }
 
-  console.log(recipeName)
+  if (recipeName.length == 0) {
+    return null
+  }
   return recipeName
 }
 
