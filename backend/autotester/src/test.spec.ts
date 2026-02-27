@@ -8,6 +8,11 @@ describe("Task 1", () => {
         .send({ input: inputStr });
     };
 
+    it("extra1", async () => {
+      const response = await getTask1("-----___Whitespace");
+      expect(response.body).toStrictEqual({ msg: " Whitespace" });
+    });
+
     it("example1", async () => {
       const response = await getTask1("Riz@z RISO00tto!");
       expect(response.body).toStrictEqual({ msg: "Rizz Risotto" });
