@@ -19,6 +19,22 @@ interface ingredient extends cookbookEntry {
   cookTime: number;
 }
 
+const entries:cookbookEntry[] = []
+
+
+function addCookbook(entry: cookbookEntry) {
+  entries[entries.length] = entry;
+}
+
+function lengthCookbook() : number {
+  return entries.length;
+}
+
+function viewCookbook(index: number) : cookbookEntry {
+  return entries[index];
+}
+
+
 // =============================================================================
 // ==== HTTP Endpoint Stubs ====================================================
 // =============================================================================
@@ -88,8 +104,45 @@ const parse_handwriting = (recipeName: string): string | null => {
 // [TASK 2] ====================================================================
 // Endpoint that adds a CookbookEntry to your magical cookbook
 app.post("/entry", (req:Request, res:Response) => {
-  // TODO: implement me
-  res.status(500).send("not yet implemented!")
+  
+  console.log(req.body) 
+
+    const entry:cookbookEntry = req.body
+    if (!(entry.type.localeCompare("recipe")==0 || entry.type.localeCompare("ingredient")==0)) {
+      res.status(400).send("wrong type");
+    }
+
+    for (let i = 0; i < lengthCookbook(); i++) {
+      if ((entry.name.toLowerCase().localeCompare(viewCookbook(i).name.toLowerCase())==0)) {
+      res.status(400).send("non-unique name");
+    }
+  }
+
+    if (entry.type.localeCompare("ingredient")==0) {
+      console.log("ingredient");
+      const ingredient: ingredient = req.body
+      if (ingredient.cookTime < 0){
+        res.status(400).send("Not a time");
+      }
+      addCookbook(ingredient);
+      console.log("ingredient");
+    } else if (entry.type.localeCompare("recipe")==0) {
+
+      const recipe: recipe = req.body
+      for (let i = 0; i < recipe.requiredItems.length; i++){
+        for (let j = 0; j < recipe.requiredItems.length; j++){
+          if ((recipe.requiredItems[i].name.toLowerCase().localeCompare(recipe.requiredItems[j].name.toLowerCase())==0)) {
+            res.status(400).send("non-unique required item");
+          }
+        }
+      }
+      addCookbook(recipe);
+    }
+
+    res.status(200);
+
+
+
 
 });
 
