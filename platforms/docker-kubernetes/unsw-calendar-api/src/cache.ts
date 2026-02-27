@@ -1,6 +1,6 @@
 import { promises as fs } from "fs";
 import { dirname, resolve } from "path";
-import { CacheShape, YearData, CacheSchema } from "./types.js";
+import { CacheShape, YearData, CacheSchema } from "./types.ts";
 
 const CACHE_PATH = resolve(process.cwd(), "cache/term-dates.json");
 

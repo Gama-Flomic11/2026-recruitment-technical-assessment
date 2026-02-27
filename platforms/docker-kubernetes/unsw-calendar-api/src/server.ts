@@ -8,9 +8,9 @@ import {
   initCache,
   setRefreshStatus,
   setYear,
-} from "./cache.js";
-import scrapeYear from "./scrape.js";
-import { YearSchema } from "./types.js";
+} from "./cache.ts";
+import scrapeYear from "./scrape.ts";
+import { YearSchema } from "./types.ts";
 
 const PORT = process.env.PORT ? parseInt(process.env.PORT, 10) : 3000;
 const HOST = process.env.HOST ?? "localhost";
