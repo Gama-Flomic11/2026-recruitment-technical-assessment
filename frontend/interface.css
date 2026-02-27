@@ -1,0 +1,102 @@
+
+.josefin-sans-500 {
+  font-family: "Josefin Sans", sans-serif;
+  font-weight: 500;
+  font-style: normal;
+ font-size: xx-large;
+ 
+}
+
+.logo {
+  padding-top: 20px;
+}
+
+
+.container {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  align-content: space-between;
+  
+}
+
+.container p {
+  color: orange;
+  vertical-align: super;
+  padding: 0px;
+
+}
+
+
+.nav {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  justify-content: flex-end;
+  padding-top: 25px;
+  color: orange;
+  align-content: space-between;
+    margin: 0px;
+
+}
+
+.nav img {
+  border: 2px;
+  border-color: orange;
+  border-style: solid;
+  border-radius: 2px;
+  margin: 10px;
+  padding: 5px
+
+
+}
+
+
+.buildings {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  align-content: space-between;
+  flex-wrap: wrap;
+}
+
+.buildings div {
+  width: 17%;
+  height: 17%;
+  position: relative;
+  padding: 20px;
+
+}
+
+.buildings img {
+  width: 100%;
+  height: 100%;
+  border-radius: 20px;
+  object-fit: cover;
+  object-position: 15% 100%;  
+  opacity: 1;
+}
+
+.buildings p {
+  position: absolute;
+  bottom: 28px;
+  left: 30px;
+  background-color: orange;
+  color: white;
+  padding-right: 10%;
+  padding-left: 5%;
+
+  padding-top: 5%;
+  padding-bottom: 5%;
+
+  width: 180px;
+  border-radius: 20px;
+  font-size: small;
+
+}
+
+@media (max-width: 100px) {
+  .container {
+    flex-direction: column;
+  }
+}
