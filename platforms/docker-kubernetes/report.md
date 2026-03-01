@@ -13,5 +13,16 @@ I did not get too far into this task as I left it to late and am not as comforta
 
 ## Kubernetes
 
-Time got me on this one, I can learn quickly though just left this one too late this time.
+My challenge in this process was primarily learning what I had to do at each stage
+
+I started by actually getting everything installed which for some reason is usually the most challenging aspect of the first 30 hours of learning anything. This install process was smoother than my previous one with typescript on my new machine so a win.
+
+Then looking at the docker compose was quit foreign but what I worked out was I need to change the paths and change the user to something based on the access of the user, I just left it 1000 and changed the paths to folders in my navidrome.
+
+I choose not to change the environments as I am still new to kubernetes so it was a challenge realising that an error was because the file was even included but that is something I will work on in my next kubernetes deploy or just read up on soon.
+
+Once getting through that error I ran the kube commands having minikube installed and my only other error was no kompose server being present in services.metadata of one of the manifested dockercompose files which I changed to navidrome and after restarting my minikube because of another operation running from previous debugging it fixed my final error and opened the program in localhost as directed.
+
+
+
 <!-- TODO: Document your process for deploying Navidrome on Kubernetes -->
